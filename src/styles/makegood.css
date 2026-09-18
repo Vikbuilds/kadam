@@ -1,0 +1,2191 @@
+/* ==========================================================================
+   KADAM CULTURE (कदम) — APPLE & PERPLEXITY DESIGN SYSTEM
+   ========================================================================== */
+
+:root {
+  /* Color Palette */
+  --mg-white: #ffffff;
+  --mg-canvas: #ffffff;
+  --mg-surface-subtle: #f8f8f9;
+  --mg-surface-card: #f2f2f5;
+  --mg-black: #000000;
+  --mg-text-primary: #111111;
+  --mg-text-secondary: #555555;
+  --mg-text-muted: #888888;
+  --mg-border: #e6e6ea;
+  --mg-border-strong: #000000;
+  
+  /* Accent Colors for Badges & Marquees */
+  --mg-lavender: #c2a7f2;
+  --mg-pink: #f9b6d8;
+  --mg-orange: #fca759;
+  --mg-mint: #9be5c4;
+  --mg-blue: #93c5fd;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-serif-editorial: 'Cormorant Garamond', 'Instrument Serif', Georgia, serif;
+  --font-display-mega: 'Syne', 'Inter', sans-serif;
+  --font-mono: 'Space Mono', monospace;
+
+  /* Transitions & Springs */
+  --spring-smooth: cubic-bezier(0.16, 1, 0.3, 1);
+  --spring-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Reset & Base */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+  background-color: var(--mg-canvas);
+  color: var(--mg-text-primary);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  overflow-x: hidden;
+  min-height: 100vh;
+  background-color: var(--mg-canvas);
+}
+
+/* ==========================================================================
+   1. TOP NAVIGATION BAR (Exact Match with Screenshot)
+   ========================================================================== */
+.mg-navbar {
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 36px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  transition: all 0.3s var(--spring-smooth);
+}
+
+.mg-nav-group {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Pill Buttons */
+.mg-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7px 18px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--mg-black);
+  background: transparent;
+  color: var(--mg-black);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.25s var(--spring-smooth);
+  user-select: none;
+}
+
+.mg-pill-btn:hover {
+  background: var(--mg-black);
+  color: var(--mg-white);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.mg-pill-btn:active {
+  transform: translateY(0) scale(0.97);
+}
+
+.mg-pill-btn.primary {
+  background: var(--mg-black);
+  color: var(--mg-white);
+}
+
+.mg-pill-btn.primary:hover {
+  background: #222;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* Logo Center */
+.mg-logo-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  text-decoration: none;
+  color: var(--mg-black);
+  transition: transform 0.3s var(--spring-smooth);
+}
+
+.mg-logo-container:hover {
+  transform: scale(1.05);
+}
+
+.mg-logo-glyph {
+  font-family: var(--font-sans);
+  font-weight: 900;
+  font-size: 26px;
+  letter-spacing: -0.04em;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+}
+
+.mg-logo-glyph span.omega {
+  position: relative;
+  margin-left: -2px;
+  font-size: 24px;
+}
+
+.mg-logo-sub {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  margin-top: 2px;
+  opacity: 0.75;
+}
+
+/* ==========================================================================
+   2. SUBHEADER TICKER BAR
+   ========================================================================== */
+.mg-subbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 36px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mg-black);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+  background: var(--mg-canvas);
+}
+
+.mg-subbar-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.mg-subbar-tag::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--mg-black);
+  animation: pulseDot 2s infinite ease-in-out;
+}
+
+@keyframes pulseDot {
+  0%, 100% { opacity: 0.3; transform: scale(0.8); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+/* ==========================================================================
+   3. HERO CONTAINER (Surreal Banner & Models)
+   ========================================================================== */
+/* ── Full-bleed hero (no card/container) ──────────────────────────── */
+.mg-hero-fullbleed {
+  position: relative;
+  width: 100%;
+  height: 100svh;         /* full viewport height */
+  min-height: 640px;
+  overflow: hidden;
+  background-color: #0e0e0e;
+  /* Ensure it sits immediately below the navbar */
+  margin-top: 0;
+}
+
+.mg-hero-fullbleed-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 65%;
+  display: block;
+}
+
+/* Grit / grain texture overlay via SVG feTurbulence */
+.mg-hero-grit {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.72' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23g)' opacity='0.18'/%3E%3C/svg%3E");
+  background-size: 220px 220px;
+  mix-blend-mode: overlay;
+  opacity: 0.65;
+  z-index: 2;
+}
+
+/* Hero text overlay — anchored bottom-left inside the fullbleed hero */
+.mg-hero-text-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  padding: 48px 48px 40px 48px;
+  background: linear-gradient(to top, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.18) 60%, transparent 100%);
+}
+
+.mg-hero-headline {
+  font-family: var(--font-display-mega);
+  font-size: clamp(40px, 6.5vw, 96px);
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: -0.03em;
+  color: #ffffff;
+  text-transform: uppercase;
+  margin: 0;
+  mix-blend-mode: normal;
+}
+
+.mg-hero-headline .highlight {
+  display: block;
+  color: rgba(255,255,255,0.55);
+  font-style: italic;
+  font-weight: 300;
+  font-size: 0.72em;
+  letter-spacing: 0.01em;
+}
+
+/* Vertical Ribbon on Left */
+.mg-hero-vertical-ribbon {
+  position: absolute;
+  left: 28px;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: center center;
+  white-space: nowrap;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 700;
+  letter-spacing: 0.24em;
+  color: rgba(24, 24, 27, 0.45);
+  text-transform: uppercase;
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Top Left Archive Stamp */
+.mg-hero-archive-stamp {
+  position: absolute;
+  top: 28px;
+  left: 28px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--mg-black);
+  text-transform: uppercase;
+  z-index: 20;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Interactive Craft Pins on Laces */
+.mg-hero-craft-pin {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #18181b;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  z-index: 15;
+  pointer-events: auto;
+  cursor: pointer;
+  transition: all 0.25s var(--spring-smooth);
+}
+
+.mg-hero-craft-pin:hover {
+  transform: scale(1.06) translateY(-2px);
+  background: #000000;
+  color: #ffffff;
+  border-color: #000000;
+}
+
+.mg-pin-pulse {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #f59e0b;
+  box-shadow: 0 0 0 rgba(245, 158, 11, 0.6);
+  animation: pinPulse 2s infinite;
+}
+
+@keyframes pinPulse {
+  0% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(245, 158, 11, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(245, 158, 11, 0); }
+}
+
+/* Top Right Badge */
+.mg-hero-badge {
+  position: absolute;
+  top: 28px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: var(--mg-black);
+  text-transform: uppercase;
+  z-index: 20;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+/* Bottom Actions inside Hero */
+.mg-hero-bottom-bar {
+  position: absolute;
+  bottom: 32px;
+  left: 36px;
+  right: 36px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  z-index: 20;
+  pointer-events: auto;
+}
+
+.mg-hero-explore-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  padding: 12px 26px;
+  border-radius: 9999px;
+  color: var(--mg-black);
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  transition: all 0.3s var(--spring-smooth);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.mg-hero-explore-pill:hover {
+  background: var(--mg-black);
+  color: var(--mg-white);
+  transform: translateY(-2px);
+}
+
+.mg-hero-explore-pill span.arrow {
+  transition: transform 0.25s ease;
+}
+
+.mg-hero-explore-pill:hover span.arrow {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   3B. SNEAKER LINE-BLOCK MATRIX GRID (Section Below KADAM Headline)
+   ========================================================================== */
+.mg-line-block-section {
+  padding: 40px 36px 80px 36px;
+  background: var(--mg-canvas);
+}
+
+.mg-line-block-inner {
+  max-width: 940px;
+  margin: 0 auto;
+}
+
+/* Header above line-block grid */
+.mg-line-block-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #000000;
+}
+
+.mg-line-block-kicker {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: #71717a;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.mg-line-block-heading {
+  font-family: var(--font-sans);
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  margin: 0;
+}
+
+.mg-line-block-meta {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: #71717a;
+}
+
+/* The Line Block Outer Frame (Exact black line block look, pure white canvas) */
+.mg-line-block-frame {
+  position: relative;
+  width: 100%;
+  border: 1px solid #000000;
+  background-color: #ffffff;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+}
+
+.mg-line-block-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
+}
+
+/* Each cell in the 3x3 line block */
+.mg-lb-cell {
+  position: relative;
+  aspect-ratio: 227 / 320;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffffff;
+  border-right: 1px solid #000000;
+  border-bottom: 1px solid #000000;
+  overflow: hidden;
+  transition: background-color 0.25s ease;
+}
+
+.mg-lb-cell:nth-child(3n) {
+  border-right: none;
+}
+
+.mg-lb-cell:nth-child(n+7) {
+  border-bottom: none;
+}
+
+.mg-lb-shoe-cell {
+  cursor: pointer;
+}
+
+.mg-lb-shoe-cell:hover {
+  background-color: #f9f9f9;
+}
+
+.mg-lb-shoe-wrap {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+}
+
+.mg-lb-shoe-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1), filter 0.3s ease;
+  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.06));
+}
+
+.mg-lb-shoe-cell:hover .mg-lb-shoe-img {
+  transform: scale(1.08) translateY(-4px);
+  filter: drop-shadow(0 14px 24px rgba(0, 0, 0, 0.12));
+}
+
+/* Corner Number Tag */
+.mg-lb-num-tag {
+  position: absolute;
+  top: 12px;
+  left: 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: #a1a1aa;
+  pointer-events: none;
+  transition: color 0.25s ease;
+}
+
+.mg-lb-shoe-cell:hover .mg-lb-num-tag {
+  color: #000000;
+}
+
+/* Hover Capsule Overlay */
+.mg-lb-hover-capsule {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 14px;
+  background: rgba(244, 243, 239, 0.96);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid #000000;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mg-lb-shoe-cell:hover .mg-lb-hover-capsule {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mg-lb-hover-name {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mg-lb-hover-lace {
+  font-size: 10px;
+  color: #52525b;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.mg-lb-hover-bottom-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 4px;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 2px;
+}
+
+.mg-lb-hover-price {
+  font-family: var(--font-mono);
+  font-size: 11.5px;
+  font-weight: 700;
+  color: #000000;
+}
+
+.mg-lb-hover-action {
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #000000;
+}
+
+/* Center Editorial Brand Block */
+.mg-lb-center-cell {
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 16px;
+}
+
+.mg-lb-center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 240px;
+}
+
+.mg-lb-center-kicker {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  color: #71717a;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.mg-lb-center-brand {
+  font-family: var(--font-sans);
+  font-size: clamp(22px, 2.8vw, 32px);
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #000000;
+  line-height: 1;
+  margin: 0;
+}
+
+.mg-lb-center-hi {
+  font-family: var(--font-hindi);
+  font-size: 18px;
+  font-weight: 700;
+  color: #18181b;
+  margin-top: 2px;
+  margin-bottom: 10px;
+}
+
+.mg-lb-center-copy {
+  font-size: 12px;
+  line-height: 1.4;
+  color: #52525b;
+  margin: 0 0 12px 0;
+}
+
+.mg-lb-center-tags {
+  font-family: var(--font-mono);
+  font-size: 8px;
+  color: #71717a;
+  letter-spacing: 0.1em;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+}
+
+.mg-lb-center-tags .dot {
+  color: #a1a1aa;
+}
+
+.mg-lb-center-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #000000;
+  color: #ffffff;
+  padding: 9px 20px;
+  border-radius: 9999px;
+  border: 1px solid #000000;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+}
+
+.mg-lb-center-cta:hover {
+  background: #27272a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.22);
+}
+
+.mg-lb-center-cta span.arrow {
+  transition: transform 0.2s ease;
+}
+
+.mg-lb-center-cta:hover span.arrow {
+  transform: translateX(4px);
+}
+
+/* Footer note below grid */
+.mg-line-block-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 14px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  color: #71717a;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   3C. CROW MASCOT & STREET CAUTION TAPE UI (Full Background Tape)
+   ========================================================================== */
+.mg-crow-mascot-section {
+  padding: 30px 0 50px 0;
+  background: var(--mg-canvas);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+/* Full-Width Background Street Caution Tapes */
+.mg-caution-bg-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+  overflow: hidden;
+}
+
+.mg-caution-tape {
+  width: 130%;
+  margin-left: -15%;
+  padding: 12px 0;
+  white-space: nowrap;
+  user-select: none;
+  display: flex;
+  align-items: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.mg-caution-tape.tape-yellow {
+  background: #ffe600;
+  color: #000000;
+  border-top: 4px solid #000000;
+  border-bottom: 4px solid #000000;
+}
+
+.mg-caution-tape.tape-angle-1 {
+  transform: rotate(-2.2deg);
+}
+
+.mg-caution-tape.tape-hazard {
+  background: #000000;
+  color: #ffe600;
+  border-top: 4px dashed #ffe600;
+  border-bottom: 4px dashed #ffe600;
+}
+
+.mg-caution-tape.tape-angle-2 {
+  transform: rotate(2.4deg);
+}
+
+.mg-caution-marquee-track {
+  display: inline-flex;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.mg-caution-marquee-track.scroll-left {
+  animation: cautionScrollLeft 26s linear infinite;
+}
+
+.mg-caution-marquee-track.scroll-right {
+  animation: cautionScrollRight 24s linear infinite;
+}
+
+.mg-caution-text {
+  display: inline-flex;
+  align-items: center;
+  gap: 36px;
+}
+
+.mg-caution-text span {
+  font-family: var(--font-mono);
+  font-size: 13.5px;
+  font-weight: 900;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.tape-hazard .mg-caution-text span {
+  color: #ffe600;
+  letter-spacing: 0.18em;
+}
+
+@keyframes cautionScrollLeft {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-33.333%); }
+}
+
+@keyframes cautionScrollRight {
+  0% { transform: translateX(-33.333%); }
+  100% { transform: translateX(0); }
+}
+
+/* Foreground Content Layer */
+.mg-crow-foreground-container {
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 48px 0 0;
+}
+
+.mg-crow-mascot-wrapper {
+  position: relative;
+  display: inline-block;
+  max-width: 440px;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.mg-crow-mascot-img {
+  width: 100%;
+  max-width: 440px;
+  height: auto;
+  display: block;
+  mix-blend-mode: multiply;
+  cursor: pointer;
+  margin-left: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  transform: none !important;
+  transition: none;
+}
+
+/* Exact Interactive Eye Tracking Socket */
+.mg-crow-eye-socket {
+  position: absolute;
+  left: 56.05%;
+  top: 25.55%;
+  width: 4.8%;
+  aspect-ratio: 1 / 1;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  z-index: 20;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto;
+}
+
+.mg-crow-eye-lid {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  transform-origin: top center;
+  transition: transform 0.08s ease-in-out;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mg-crow-pupil {
+  width: 46%;
+  height: 46%;
+  background: #09090b;
+  border-radius: 50%;
+  position: relative;
+  transition: transform 0.05s ease-out;
+  pointer-events: none;
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.7);
+}
+
+.mg-crow-pupil-glint {
+  position: absolute;
+  top: 14%;
+  right: 14%;
+  width: 30%;
+  height: 30%;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 1px #ffffff;
+}
+
+
+
+
+
+/* Top Right Badge */
+.mg-hero-badge {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 7px 16px;
+  border-radius: 9999px;
+  font-size: 10.5px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  color: #000000;
+  text-transform: uppercase;
+  z-index: 20;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* ==========================================================================
+   4. GIANT MEGA HEADLINE (Syne / Grotesque)
+   ========================================================================== */
+.mg-mega-headline-section {
+  padding: 40px 36px 60px 36px;
+  background: var(--mg-canvas);
+  text-align: center;
+}
+
+.mg-mega-headline {
+  font-family: var(--font-display-mega);
+  font-weight: 800;
+  font-size: clamp(3rem, 7.5vw, 7.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  color: var(--mg-black);
+  margin: 0 auto;
+  max-width: 1380px;
+}
+
+.mg-mega-headline span.highlight {
+  display: block;
+}
+
+/* ==========================================================================
+   5. SPLIT EDITORIAL SECTION ("Mind Your Step")
+   ========================================================================== */
+.mg-mind-step-section {
+  padding: 60px 36px 90px 36px;
+  background: var(--mg-canvas);
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.mg-mind-step-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 60px;
+  align-items: center;
+}
+
+/* Left Column: Perplexity Editorial Serif */
+.mg-mind-step-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-right: 20px;
+}
+
+.mg-mind-step-title {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(3.8rem, 6.8vw, 6.2rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--mg-black);
+  margin-bottom: 40px;
+}
+
+.mg-mind-step-title span.italic-accent {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.mg-mind-step-body {
+  font-family: var(--font-sans);
+  font-size: clamp(1.1rem, 1.4vw, 1.35rem);
+  font-weight: 500;
+  line-height: 1.45;
+  color: var(--mg-text-primary);
+  max-width: 480px;
+  margin-bottom: 36px;
+}
+
+.mg-mind-step-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  align-self: flex-start;
+  padding: 10px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--mg-black);
+  background: transparent;
+  color: var(--mg-black);
+  font-family: var(--font-sans);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 0.3s var(--spring-smooth);
+}
+
+.mg-mind-step-cta:hover {
+  background: var(--mg-black);
+  color: var(--mg-white);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+.mg-mind-step-cta span.arrow {
+  transition: transform 0.25s ease;
+}
+
+.mg-mind-step-cta:hover span.arrow {
+  transform: translateX(4px);
+}
+
+/* Right Column: Editorial Chair Card */
+.mg-mind-step-right {
+  position: relative;
+  border-radius: 28px;
+  overflow: hidden;
+  background: #f0f0f3;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+}
+
+.mg-mind-step-img {
+  width: 100%;
+  height: 640px;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.8s var(--spring-smooth);
+}
+
+.mg-mind-step-right:hover .mg-mind-step-img {
+  transform: scale(1.03);
+}
+
+.mg-card-tag {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  background: rgba(255, 255, 255, 0.92);
+  backdrop-filter: blur(12px);
+  padding: 8px 18px;
+  border-radius: 9999px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--mg-black);
+}
+
+/* ==========================================================================
+   6. ICON BADGES MARQUEE ROW (Flower, Sun, Hand, Cog, Spore)
+   ========================================================================== */
+.mg-badge-bar {
+  padding: 30px 36px;
+  border-top: 1px solid var(--mg-border);
+  border-bottom: 1px solid var(--mg-border);
+  background: var(--mg-canvas);
+}
+
+.mg-badge-row {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+
+.mg-badge-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  transition: transform 0.25s var(--spring-bounce);
+}
+
+.mg-badge-item:hover {
+  transform: scale(1.08) translateY(-2px);
+}
+
+.mg-badge-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.06);
+}
+
+.mg-badge-icon.pink { background: #ffe4e6; color: #e11d48; }
+.mg-badge-icon.orange { background: #ffedd5; color: #ea580c; }
+.mg-badge-icon.purple { background: #f3e8ff; color: #9333ea; }
+.mg-badge-icon.green { background: #dcfce7; color: #16a34a; }
+.mg-badge-icon.blue { background: #e0f2fe; color: #0284c7; }
+
+.mg-badge-text {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--mg-black);
+}
+
+/* ==========================================================================
+   7. "TELL OUR STORY" & DYNAMIC ZIG-ZAG SCROLLING LACE ENGINE
+   ========================================================================== */
+.mg-story-section {
+  position: relative;
+  padding: 120px 36px 140px 36px;
+  background: var(--mg-surface-subtle);
+  overflow: hidden;
+}
+
+/* Header for Story */
+.mg-story-header {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 90px auto;
+}
+
+.mg-story-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mg-text-muted);
+  margin-bottom: 16px;
+}
+
+.mg-story-main-title {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(3.2rem, 5.5vw, 5.2rem);
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--mg-black);
+  margin-bottom: 20px;
+}
+
+.mg-story-main-title em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.mg-story-subtitle {
+  font-size: 1.15rem;
+  line-height: 1.6;
+  color: var(--mg-text-secondary);
+}
+
+/* Canvas Container for the Zig-Zag Lace */
+.mg-lace-engine-container {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* SVG Lace Overlay that threads through eyelets */
+.mg-lace-svg-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mg-lace-shadow {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.15);
+  stroke-width: 10;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  filter: blur(4px);
+}
+
+.mg-lace-body {
+  fill: none;
+  stroke: #111111;
+  stroke-width: 7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 6 3; /* Braided textured weave look */
+}
+
+.mg-lace-core {
+  fill: none;
+  stroke: #2a2a2a;
+  stroke-width: 5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+/* 3D Metal Aglet Tip Follower */
+.mg-aglet-follower {
+  position: absolute;
+  width: 14px;
+  height: 36px;
+  background: linear-gradient(135deg, #d4af37 0%, #fff2a8 50%, #997914 100%);
+  border-radius: 4px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
+  z-index: 25;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  transition: transform 0.05s linear;
+}
+
+.mg-aglet-ring {
+  position: absolute;
+  top: 4px;
+  left: 1px;
+  right: 1px;
+  height: 2px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+/* Story Chapters Grid */
+.mg-story-chapters {
+  display: flex;
+  flex-direction: column;
+  gap: 120px;
+  position: relative;
+  z-index: 5;
+}
+
+.mg-story-chapter-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
+  position: relative;
+  background: var(--mg-white);
+  border: 1px solid var(--mg-border);
+  border-radius: 28px;
+  padding: 48px;
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.03);
+  transition: transform 0.4s var(--spring-smooth), box-shadow 0.4s var(--spring-smooth);
+}
+
+.mg-story-chapter-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.07);
+}
+
+.mg-story-chapter-card.reverse {
+  direction: rtl;
+}
+
+.mg-story-chapter-card.reverse > * {
+  direction: ltr;
+}
+
+/* Embedded Metallic Eyelet Rings */
+.mg-eyelet {
+  position: absolute;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #e6e6e6 0%, #a8a8a8 70%, #444 100%);
+  border: 3px solid #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25), inset 0 2px 4px rgba(0, 0, 0, 0.6);
+  z-index: 20;
+}
+
+.mg-eyelet::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 14px;
+  height: 14px;
+  transform: translate(-50%, -50%);
+  background: #111111;
+  border-radius: 50%;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+.mg-eyelet.left {
+  left: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.mg-eyelet.right {
+  right: -16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+/* Chapter Card Content */
+.mg-chapter-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.mg-chapter-number {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--mg-text-muted);
+  margin-bottom: 12px;
+}
+
+.mg-chapter-title {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(2.2rem, 3.5vw, 3.4rem);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  color: var(--mg-black);
+  margin-bottom: 20px;
+}
+
+.mg-chapter-text {
+  font-family: var(--font-sans);
+  font-size: 1.05rem;
+  line-height: 1.65;
+  color: var(--mg-text-secondary);
+  margin-bottom: 24px;
+}
+
+.mg-chapter-meta {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.mg-chapter-tag {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  background: var(--mg-surface-subtle);
+  border: 1px solid var(--mg-border);
+  color: var(--mg-text-primary);
+}
+
+.mg-chapter-media {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+  height: 360px;
+  background: #f0f0f3;
+}
+
+.mg-chapter-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s var(--spring-smooth);
+}
+
+.mg-story-chapter-card:hover .mg-chapter-media img {
+  transform: scale(1.04);
+}
+
+/* ==========================================================================
+   8. PERPLEXITY-STYLE FULL-WIDTH MANIFESTO PULL QUOTE
+   ========================================================================== */
+.mg-manifesto-strip {
+  padding: 90px 36px;
+  background: var(--mg-white);
+  border-top: 1px solid var(--mg-border);
+  border-bottom: 1px solid var(--mg-border);
+  text-align: center;
+}
+
+.mg-manifesto-inner {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.mg-manifesto-quote {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(2.5rem, 4.5vw, 4.2rem);
+  font-weight: 300;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: var(--mg-black);
+  margin-bottom: 30px;
+}
+
+.mg-manifesto-quote em {
+  font-style: italic;
+  font-weight: 400;
+}
+
+.mg-manifesto-author {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--mg-text-muted);
+}
+
+/* ==========================================================================
+   9. APPLE-GRADE INTERACTIVE OPENER MODAL / CURTAIN
+   ========================================================================== */
+.mg-opener-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 10000;
+  background: #09090b;
+  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 32px;
+  text-align: center;
+  transition: transform 0.85s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.85s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mg-opener-overlay.dismissed {
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mg-opener-bg-glow {
+  position: absolute;
+  width: 600px;
+  height: 600px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(194, 167, 242, 0.18) 0%, transparent 70%);
+  filter: blur(80px);
+  pointer-events: none;
+  animation: breatheGlow 8s infinite alternate ease-in-out;
+}
+
+@keyframes breatheGlow {
+  0% { transform: scale(0.9); opacity: 0.5; }
+  100% { transform: scale(1.2); opacity: 0.9; }
+}
+
+.mg-opener-content {
+  position: relative;
+  z-index: 10;
+  max-width: 680px;
+}
+
+.mg-opener-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: #a1a1aa;
+  margin-bottom: 24px;
+}
+
+.mg-opener-title {
+  font-family: var(--font-serif-editorial);
+  font-size: clamp(2.8rem, 5.5vw, 4.6rem);
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 24px;
+}
+
+.mg-opener-title em {
+  font-style: italic;
+  color: #e4d8ff;
+}
+
+.mg-opener-desc {
+  font-size: 1.15rem;
+  color: #a1a1aa;
+  line-height: 1.6;
+  margin-bottom: 44px;
+}
+
+/* Interactive Pull-The-Lace Enter Button */
+.mg-opener-trigger-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mg-opener-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 14px;
+  padding: 14px 36px;
+  border-radius: 9999px;
+  background: #ffffff;
+  color: #000000;
+  border: none;
+  font-family: var(--font-sans);
+  font-size: 13px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.3s var(--spring-smooth);
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+}
+
+.mg-opener-enter-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 60px rgba(255, 255, 255, 0.45);
+}
+
+.mg-opener-enter-btn:active {
+  transform: scale(0.98);
+}
+
+.mg-opener-skip {
+  background: transparent;
+  border: none;
+  color: #71717a;
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.mg-opener-skip:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   10. PRODUCT DETAIL & CART SLIDE-OUT DRAWER
+   ========================================================================== */
+.mg-drawer-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+}
+
+.mg-drawer-backdrop.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mg-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 480px;
+  max-width: 90vw;
+  height: 100vh;
+  background: #ffffff;
+  box-shadow: -20px 0 60px rgba(0, 0, 0, 0.2);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.45s var(--spring-smooth);
+}
+
+.mg-drawer.active {
+  transform: translateX(0);
+}
+
+.mg-drawer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 32px;
+  border-bottom: 1px solid var(--mg-border);
+}
+
+.mg-drawer-title {
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.mg-drawer-close {
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 4px;
+  transition: transform 0.2s ease;
+}
+
+.mg-drawer-close:hover {
+  transform: scale(1.15);
+}
+
+.mg-drawer-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ==========================================================================
+   11. LUXURY EDITORIAL FOOTER
+   ========================================================================== */
+.mg-footer {
+  background: #000000;
+  color: #ffffff;
+  padding: 90px 36px 40px 36px;
+  border-top: 1px solid #222;
+}
+
+.mg-footer-top {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  max-width: 1400px;
+  margin: 0 auto 80px auto;
+}
+
+.mg-footer-brand-col {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.mg-footer-logo {
+  font-size: 24px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+}
+
+.mg-footer-tagline {
+  font-size: 14px;
+  color: #888888;
+  max-width: 320px;
+  line-height: 1.5;
+}
+
+.mg-footer-col-title {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: #888888;
+  margin-bottom: 18px;
+}
+
+.mg-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.mg-footer-link {
+  color: #cccccc;
+  text-decoration: none;
+  font-size: 13px;
+  transition: color 0.2s ease;
+}
+
+.mg-footer-link:hover {
+  color: #ffffff;
+}
+
+.mg-footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-top: 32px;
+  border-top: 1px solid #222;
+  font-size: 11px;
+  color: #666666;
+  letter-spacing: 0.05em;
+}
+
+/* ==========================================================================
+   12. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 1024px) {
+  .mg-hero-card {
+    height: 580px;
+  }
+
+  .mg-mind-step-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .mg-mind-step-img {
+    height: 480px;
+  }
+
+  .mg-story-chapter-card,
+  .mg-story-chapter-card.reverse {
+    grid-template-columns: 1fr;
+    direction: ltr;
+    padding: 32px;
+  }
+
+  .mg-story-chapter-card.reverse > * {
+    direction: ltr;
+  }
+
+  .mg-footer-top {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .mg-navbar {
+    padding: 12px 20px;
+  }
+
+  .mg-hero-wrapper {
+    padding: 0 16px 24px 16px;
+  }
+
+  .mg-hero-card {
+    height: 480px;
+    border-radius: 20px;
+  }
+
+  .mg-hero-floating-sneakers {
+    width: 140px;
+    left: 20px;
+    top: 20px;
+  }
+
+  .mg-hero-vertical-ribbon {
+    display: none;
+  }
+
+  .mg-subbar {
+    padding: 10px 20px;
+    font-size: 9.5px;
+  }
+
+  .mg-mega-headline-section {
+    padding: 24px 16px 40px 16px;
+  }
+
+  .mg-mind-step-section {
+    padding: 40px 20px;
+  }
+
+  .mg-mind-step-img {
+    height: 380px;
+  }
+
+  .mg-footer-top {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .mg-footer-bottom {
+    flex-direction: column;
+    gap: 12px;
+    text-align: center;
+  }
+}
+
+/* ==========================================================================
+   13. DEDICATED CATALOG PAGE STYLING
+   ========================================================================== */
+.mg-catalog-page-container {
+  padding: 40px 36px 120px 36px;
+  max-width: 1440px;
+  margin: 0 auto;
+  min-height: 85vh;
+}
+
+.mg-catalog-return-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--mg-border);
+}
+
+.mg-catalog-badge-pill {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--mg-text-muted);
+  text-transform: uppercase;
+}
+
+.mg-catalog-hero {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.mg-catalog-main-title {
+  font-family: var(--font-display-mega);
+  font-size: clamp(2.6rem, 5.5vw, 4.8rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 10px;
+  line-height: 1;
+}
+
+.mg-catalog-sub-title {
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--mg-text-secondary);
+}
+
+.mg-catalog-search-field {
+  width: 100%;
+  padding: 14px 24px;
+  border-radius: 9999px;
+  border: 1.5px solid var(--mg-border);
+  background: var(--mg-surface-subtle);
+  font-family: var(--font-sans);
+  font-size: 11.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000;
+  outline: none;
+  transition: border-color 0.25s ease, box-shadow 0.25s ease;
+}
+
+.mg-catalog-search-field:focus {
+  border-color: #000000;
+  background: #ffffff;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+}
+
+.mg-catalog-tabs-bar {
+  margin-bottom: 44px;
+}
+
+.mg-catalog-tabs-scroll {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mg-catalog-grid-wrapper {
+  margin-bottom: 80px;
+}
+
+.mg-catalog-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+}
+
+.mg-catalog-card {
+  background: #ffffff;
+  border: 1px solid var(--mg-border);
+  border-radius: 20px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: all 0.3s var(--spring-smooth);
+}
+
+.mg-catalog-card:hover {
+  transform: translateY(-4px);
+  border-color: #000000;
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.07);
+}
+
+.mg-card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.mg-card-badge {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: var(--mg-surface-subtle);
+  padding: 4px 10px;
+  border-radius: 9999px;
+  border: 1px solid var(--mg-border);
+  color: var(--mg-text-primary);
+}
+
+.mg-card-rating {
+  font-size: 11px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.mg-card-img-wrap {
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border-radius: 14px;
+  background: #fafafc;
+  margin-bottom: 20px;
+  cursor: pointer;
+}
+
+.mg-card-img {
+  max-height: 180px;
+  max-width: 90%;
+  object-fit: contain;
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.08));
+  transition: transform 0.35s ease;
+}
+
+.mg-catalog-card:hover .mg-card-img {
+  transform: scale(1.06);
+}
+
+.mg-card-meta-stack {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.mg-card-code {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  color: var(--mg-text-muted);
+  letter-spacing: 0.15em;
+  margin-bottom: 6px;
+}
+
+.mg-card-title {
+  font-size: 12.5px;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 6px;
+  line-height: 1.35;
+  cursor: pointer;
+}
+
+.mg-card-tagline {
+  font-size: 12px;
+  color: var(--mg-text-secondary);
+  margin-bottom: 14px;
+  line-height: 1.4;
+  min-height: 34px;
+}
+
+.mg-card-specs-chip {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--mg-text-muted);
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.mg-card-price-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--mg-border);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.mg-card-price-wrap {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.mg-card-price {
+  font-family: var(--font-mono);
+  font-size: 15px;
+  font-weight: 800;
+  color: #000000;
+}
+
+.mg-card-orig-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--mg-text-muted);
+  text-decoration: line-through;
+}
+
+.mg-catalog-visualizer-section {
+  margin-top: 80px;
+  padding: 80px 0;
+  border-top: 1px solid var(--mg-border);
+}
+
+.mg-catalog-bundle-section {
+  margin-top: 40px;
+  padding: 60px 0;
+  border-top: 1px solid var(--mg-border);
+}
+
+@media (max-width: 1100px) {
+  .mg-catalog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 680px) {
+  .mg-catalog-grid {
+    grid-template-columns: 1fr;
+  }
+  .mg-catalog-page-container {
+    padding: 24px 16px 80px 16px;
+  }
+}
+
+/* Responsive Styling for Hero and 3x3 Line-Block Matrix */
+@media (max-width: 768px) {
+  .mg-hero-wrapper {
+    padding: 0 16px 24px 16px;
+  }
+  .mg-hero-card {
+    height: 480px;
+    min-height: 420px;
+    border-radius: 20px;
+  }
+  .mg-hero-floating-sneakers {
+    display: none;
+  }
+  .mg-hero-vertical-ribbon {
+    display: none;
+  }
+
+  /* 3x3 Line-Block Matrix on Mobile */
+  .mg-line-block-section {
+    padding: 24px 16px 48px 16px;
+  }
+  .mg-line-block-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+  .mg-line-block-heading {
+    font-size: 18px;
+  }
+  .mg-lb-shoe-wrap {
+    padding: 6px;
+  }
+  .mg-lb-num-tag {
+    top: 6px;
+    left: 8px;
+    font-size: 7.5px;
+  }
+  .mg-lb-center-cell {
+    padding: 8px 4px;
+  }
+  .mg-lb-center-kicker {
+    font-size: 7px;
+    margin-bottom: 2px;
+  }
+  .mg-lb-center-brand {
+    font-size: 15px;
+  }
+  .mg-lb-center-hi {
+    font-size: 11px;
+    margin-bottom: 3px;
+  }
+  .mg-lb-center-copy {
+    font-size: 8.5px;
+    line-height: 1.25;
+    margin-bottom: 5px;
+  }
+  .mg-lb-center-tags {
+    display: none;
+  }
+  .mg-lb-center-cta {
+    padding: 4px 10px;
+    font-size: 8px;
+  }
+  .mg-line-block-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 4px;
+    font-size: 8.5px;
+  }
+
+  /* Crow Mascot & Ticker on Mobile */
+  .mg-crow-mascot-section {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 16px 0 32px 0;
+  }
+  .mg-crow-mascot-wrapper {
+    max-width: 280px;
+    margin: 0;
+    padding: 0;
+  }
+  .mg-crow-mascot-img {
+    max-width: 280px;
+    margin-left: 0;
+  }
+  .mg-crow-foreground-container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 16px;
+    gap: 16px;
+  }
+
+  .mg-caution-tape {
+    padding: 8px 0;
+  }
+  .mg-caution-text span {
+    font-size: 11px;
+    gap: 20px;
+  }
+}
+
+

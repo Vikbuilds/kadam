@@ -1,0 +1,566 @@
+/* GOAT.com Minimal Luxury Design System */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: var(--bg-canvas);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: var(--bg-canvas);
+  overflow-x: hidden;
+  line-height: 1.5;
+}
+
+.story-container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* GOAT Header */
+.story-header {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-hairline);
+  display: flex;
+  align-items: center;
+}
+
+.story-header-inner {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  align-items: center;
+  width: 100%;
+}
+
+.goat-brand-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  text-decoration: none;
+  color: #000000;
+}
+
+.kadam-brand-logo-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+}
+
+.kadam-hero-logo-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.kadam-hero-logo-img {
+  height: 76px;
+  width: auto;
+  object-fit: contain;
+}
+
+.kadam-footer-logo-wrap {
+  margin-bottom: 18px;
+}
+
+.kadam-footer-logo-img {
+  height: 36px;
+  width: auto;
+  filter: invert(1) brightness(2);
+}
+
+.goat-brand-name {
+  font-family: var(--font-heading);
+  font-size: 16px;
+  font-weight: 800;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+}
+
+.goat-brand-symbol {
+  font-family: var(--font-serif);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.goat-search-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.goat-search-input {
+  width: 100%;
+  max-width: 320px;
+  background: transparent;
+  border: none;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #000000;
+  outline: none;
+}
+
+.goat-search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.goat-menu-right {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 24px;
+}
+
+.goat-dots-btn {
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  color: #000000;
+}
+
+/* GOAT Hero Brand Banner */
+.goat-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+  background: #FFFFFF;
+}
+
+.goat-hero-title {
+  font-family: var(--font-heading);
+  font-size: clamp(48px, 8vw, 96px);
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #000000;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.goat-hero-sub {
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* GOAT 4-Column Filter Bar */
+.goat-filter-bar {
+  border-top: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  background: #FFFFFF;
+}
+
+.goat-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.goat-filter-item {
+  border-right: 1px solid var(--border-hairline);
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  transition: var(--transition-fast);
+  user-select: none;
+}
+
+.goat-filter-item:last-child {
+  border-right: none;
+}
+
+.goat-filter-item:hover {
+  color: #000000;
+  background: #FAFAFA;
+}
+
+.goat-filter-arrow {
+  font-size: 10px;
+  color: var(--text-muted);
+}
+
+/* GOAT Signature 4-Column Bordered Product Grid */
+.goat-catalog-section {
+  background: #FFFFFF;
+  padding-bottom: 100px;
+}
+
+.goat-product-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-left: 1px solid var(--border-hairline);
+  border-top: 1px solid var(--border-hairline);
+}
+
+.goat-product-cell {
+  background: #FFFFFF;
+  border-right: 1px solid var(--border-hairline);
+  border-bottom: 1px solid var(--border-hairline);
+  padding: 40px 24px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 380px;
+  cursor: pointer;
+  position: relative;
+  transition: background-color 0.2s ease;
+}
+
+.goat-product-cell:hover {
+  background-color: #FAFAFA;
+}
+
+.goat-image-wrapper {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 0;
+  position: relative;
+}
+
+.goat-product-img {
+  max-width: 85%;
+  max-height: 200px;
+  object-fit: contain;
+  filter: drop-shadow(0 14px 18px rgba(0, 0, 0, 0.10));
+  transition: transform 0.3s ease;
+}
+
+.goat-product-cell:hover .goat-product-img {
+  transform: translateY(-6px) scale(1.03);
+}
+
+.goat-badge-pill {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  font-family: var(--font-heading);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.goat-cell-info {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-top: 24px;
+  gap: 12px;
+}
+
+.goat-product-name {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  max-width: 70%;
+}
+
+.goat-product-price {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  color: #000000;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+/* GOAT PDP Modal */
+.goat-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(8px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.goat-modal-backdrop.open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.goat-modal-box {
+  background: #FFFFFF;
+  max-width: 900px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  position: relative;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.goat-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: transparent;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.goat-modal-gallery {
+  background: #FAFAFA;
+  padding: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid var(--border-hairline);
+}
+
+.goat-modal-gallery img {
+  max-width: 100%;
+  max-height: 320px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.12));
+}
+
+.goat-modal-details {
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.goat-modal-title {
+  font-family: var(--font-heading);
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #000000;
+  margin-bottom: 8px;
+}
+
+.goat-modal-price {
+  font-size: 18px;
+  font-weight: 800;
+  color: #000000;
+  margin-bottom: 24px;
+}
+
+.goat-modal-desc {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 24px;
+}
+
+.goat-btn-add {
+  width: 100%;
+  padding: 16px;
+  background: #000000;
+  color: #FFFFFF;
+  border: none;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.goat-btn-add:hover {
+  background: #222222;
+}
+
+/* Pitch Black GOAT Footer */
+.goat-footer {
+  background: #000000;
+  color: #FFFFFF;
+  padding: 80px 0 40px;
+  font-family: var(--font-heading);
+}
+
+.goat-footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 48px;
+  padding-bottom: 60px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.goat-footer-col h5 {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+}
+
+.goat-newsletter-form {
+  display: flex;
+  margin-top: 12px;
+  max-width: 360px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.goat-newsletter-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 10px 0;
+  color: #FFFFFF;
+  font-size: 12px;
+  outline: none;
+}
+
+.goat-newsletter-btn {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  padding-left: 12px;
+}
+
+.goat-footer-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.goat-footer-links a {
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  transition: color 0.2s ease;
+}
+
+.goat-footer-links a:hover {
+  color: #FFFFFF;
+}
+
+/* Catalog Cell Rating & Name Stack (Matching Reference) */
+.ref-rating-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: #000000;
+  color: #FFFFFF;
+  padding: 4px 10px;
+  border-radius: 100px;
+  font-family: var(--font-heading);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  z-index: 2;
+}
+
+.goat-cell-info-stack {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-top: 16px;
+  gap: 6px;
+}
+
+.goat-product-name-bold {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #000000;
+  line-height: 1.3;
+}
+
+.goat-product-price-bold {
+  font-family: var(--font-heading);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.goat-footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 32px;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: rgba(255, 255, 255, 0.4);
+  text-transform: uppercase;
+}
+
+/* Responsive Queries */
+@media (max-width: 1024px) {
+  .goat-product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .goat-filter-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .goat-footer-grid {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+}
+
+@media (max-width: 600px) {
+  .goat-product-grid {
+    grid-template-columns: 1fr;
+  }
+  .story-container {
+    padding: 0 20px;
+  }
+  .goat-modal-box {
+    grid-template-columns: 1fr;
+  }
+}

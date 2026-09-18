@@ -1,0 +1,312 @@
+/* Culture & Unboxing Showcase Styles */
+.culture-section {
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--border-subtle);
+  position: relative;
+  padding: 80px 0;
+}
+
+.culture-header {
+  text-align: center;
+  margin-bottom: 48px;
+}
+
+.culture-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr 1fr;
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+@media (max-width: 1024px) {
+  .culture-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.culture-card {
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  border-radius: 20px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-smooth);
+  box-shadow: var(--shadow-sm);
+}
+
+.culture-card:hover {
+  border-color: var(--border-saffron);
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+}
+
+.culture-card-img-wrap {
+  width: 100%;
+  aspect-ratio: 16/10;
+  background: #F4F4F6;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Tin Box Illustration */
+.tin-box-illustration {
+  width: 80%;
+  height: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tin-body {
+  width: 180px;
+  height: 110px;
+  background: linear-gradient(145deg, #2D3748, #1A202C);
+  border-radius: 12px;
+  border: 2px solid #4A5568;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  padding: 16px;
+}
+
+.tin-lid-groove {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+  right: 16px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 2px;
+}
+
+.tin-brand-logo {
+  font-family: var(--font-devanagari);
+  font-size: 26px;
+  font-weight: 900;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+.tin-brand-sub {
+  font-size: 8px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #FFB703;
+  margin-top: 4px;
+  text-transform: uppercase;
+}
+
+.tin-hangtag {
+  position: absolute;
+  bottom: -22px;
+  right: -12px;
+  background: #E2E8F0;
+  border: 1px solid #CBD5E0;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transform: rotate(-8deg);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.hangtag-string {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  width: 1px;
+  height: 12px;
+  background: #A0AEC0;
+}
+
+.hangtag-label {
+  font-size: 8px;
+  font-weight: 900;
+  color: #2D3748;
+  letter-spacing: 0.05em;
+}
+
+/* Hardware Kit Preview */
+.hardware-kit-preview {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  width: 100%;
+  height: 100%;
+}
+
+.aglet-row {
+  display: flex;
+  gap: 12px;
+}
+
+.mini-aglet {
+  width: 8px;
+  height: 32px;
+  border-radius: 4px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.aglet-matte-black { background: linear-gradient(180deg, #333, #111); }
+.aglet-gunmetal { background: linear-gradient(180deg, #64748B, #334155); }
+.aglet-brass { background: linear-gradient(180deg, #F59E0B, #B45309); }
+.aglet-silver { background: linear-gradient(180deg, #E2E8F0, #94A3B8); }
+
+.mini-screwdriver {
+  display: flex;
+  align-items: center;
+}
+
+.tool-handle {
+  width: 36px;
+  height: 12px;
+  background: #09090B;
+  border-radius: 6px 0 0 6px;
+}
+
+.tool-shaft {
+  width: 28px;
+  height: 4px;
+  background: #94A3B8;
+  border-radius: 0 2px 2px 0;
+}
+
+.kit-count-pill {
+  font-size: 10px;
+  font-weight: 800;
+  background: #FFFFFF;
+  border: 1px solid var(--border-subtle);
+  padding: 4px 10px;
+  border-radius: 12px;
+  color: var(--text-primary);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.culture-card-content {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.culture-card-content h3 {
+  font-size: 18px;
+  font-weight: 800;
+  margin-top: 4px;
+  color: var(--text-primary);
+}
+
+.culture-card-content p {
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
+/* Sticker Pack Preview */
+.sticker-pack-preview {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+}
+
+.holo-sticker {
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #FF5722, #E91E63, #00B5AD);
+  background-size: 200% 200%;
+  animation: shimmer 4s infinite;
+  color: #FFFFFF;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+  transform: rotate(-3deg);
+}
+
+.sticker-2 {
+  transform: rotate(4deg);
+  background: linear-gradient(135deg, #00B5AD, #6366F1, #E91E63);
+}
+
+.sticker-3 {
+  transform: rotate(-1deg);
+  background: linear-gradient(135deg, #EAB308, #FF5722);
+  color: #000;
+}
+
+/* Quote Band */
+.culture-quote-band {
+  background: #FAFAFC;
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  padding: 48px 32px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.quote-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-devanagari);
+  font-size: 180px;
+  font-weight: 900;
+  color: rgba(0, 0, 0, 0.03);
+  pointer-events: none;
+  user-select: none;
+}
+
+.culture-quote-band blockquote {
+  font-family: var(--font-heading);
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--text-primary);
+  max-width: 860px;
+  margin: 0 auto 24px;
+  position: relative;
+  z-index: 1;
+}
+
+.quote-author {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.author-name {
+  font-family: var(--font-heading);
+  font-size: 13px;
+  font-weight: 800;
+  color: var(--saffron-primary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.author-city {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+

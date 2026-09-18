@@ -1,0 +1,114 @@
+/* Hero Section Split Grid (Matching Reference Image 1 & 2) */
+.hero-section {
+  position: relative;
+  padding: 64px 0 80px;
+  overflow: hidden;
+  background: var(--bg-charcoal);
+  border-bottom: 1px solid var(--border-subtle);
+}
+
+.hero-split-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 48px;
+  align-items: center;
+}
+
+@media (max-width: 1024px) {
+  .hero-split-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* Left Brand Collage Column */
+.hero-brand-collage {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.brand-display-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background: rgba(0, 0, 0, 0.04);
+  border: 1px solid var(--border-subtle);
+  border-radius: 100px;
+  font-family: var(--font-heading);
+  font-size: 12px;
+  font-weight: 800;
+  color: #09090B;
+  width: fit-content;
+}
+
+.hero-brand-headline {
+  font-family: var(--font-heading);
+  font-size: clamp(3rem, 6vw, 4.8rem);
+  font-weight: 900;
+  line-height: 0.95;
+  letter-spacing: -0.04em;
+  color: #09090B;
+  text-transform: uppercase;
+}
+
+.hero-brand-headline .highlight-saffron {
+  color: var(--saffron-primary);
+}
+
+.hero-brand-sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  max-width: 520px;
+}
+
+/* Graphic Ribbon Tags matching Image 1 */
+.hero-ribbon-tags {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px 0;
+}
+
+.ribbon-tag {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-radius: 10px;
+  font-family: var(--font-heading);
+  font-weight: 900;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  box-shadow: var(--shadow-sm);
+}
+
+.ribbon-yellow {
+  background: #EAB308;
+  color: #111827;
+}
+
+.ribbon-neon {
+  background: linear-gradient(90deg, #22C55E 50%, #EC4899 50%);
+  color: #FFFFFF;
+}
+
+.ribbon-sub {
+  font-size: 10px;
+  font-weight: 800;
+  opacity: 0.85;
+}
+
+.hero-cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 6px;
+}
+
+/* Right Visualizer Container */
+.hero-visualizer-wrap {
+  width: 100%;
+}
