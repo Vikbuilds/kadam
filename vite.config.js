@@ -1,4 +1,5 @@
 import { defineConfig } from 'vite';
+import viteImagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   // ── Dev Server ─────────────────────────────────────────
@@ -8,37 +9,50 @@ export default defineConfig({
     host: true,
   },
 
+  // ── Plugins ────────────────────────────────────────────
+  plugins: [
+    viteImagemin({
+      // JPEG: mozjpeg — industry-standard, ~60-70% smaller
+      mozjpeg: { quality: 75, progressive: true },
+      // PNG: pngquant lossy first, then optipng lossless
+      pngquant: { quality: [0.65, 0.8], speed: 4 },
+      optipng:  { optimizationLevel: 5 },
+      // SVG: svgo with safe defaults
+      svgo: {
+        plugins: [
+          { name: 'removeViewBox', active: false },
+          { name: 'removeEmptyAttrs', active: true },
+        ],
+      },
+      // GIF passthrough (not used here)
+      gifsicle: { optimizationLevel: 2 },
+    }),
+  ],
+
   // ── Production Build ───────────────────────────────────
   build: {
     outDir: 'dist',
     emptyOutDir: true,
-    // Inline assets < 4 KB as base64 (fewer HTTP requests)
     assetsInlineLimit: 4096,
-    // Enable CSS code-splitting per chunk
     cssCodeSplit: true,
-    // Sourcemaps off in production (smaller deploy)
     sourcemap: false,
-    // Raise the chunk-size warning threshold
     chunkSizeWarningLimit: 600,
     rollupOptions: {
       output: {
-        // Split vendor JS into its own cached chunk
         manualChunks(id) {
-          if (id.includes('node_modules')) {
-            return 'vendor';
-          }
+          if (id.includes('node_modules')) return 'vendor';
         },
-        // Hashed filenames for long-term browser caching
-        entryFileNames:  'assets/[name]-[hash].js',
-        chunkFileNames:  'assets/[name]-[hash].js',
-        assetFileNames:  'assets/[name]-[hash][extname]',
+        entryFileNames: 'assets/[name]-[hash].js',
+        chunkFileNames: 'assets/[name]-[hash].js',
+        assetFileNames: 'assets/[name]-[hash][extname]',
       },
     },
   },
 
-  // ── Preview (local prod test) ──────────────────────────
+  // ── Preview ────────────────────────────────────────────
   preview: {
     port: 4173,
     host: true,
   },
 });
+
