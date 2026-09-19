@@ -368,7 +368,7 @@
   margin-top: 36px;
 }
 
-/* Responsive */
+/* Responsive Mobile Enhancements */
 @media (max-width: 1024px) {
   .goat-sneaker-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -384,12 +384,55 @@
 
 @media (max-width: 640px) {
   .goat-sneaker-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .goat-filter-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
   .goat-header-inner {
     padding: 0 16px;
+    grid-template-columns: auto 1fr auto;
+    gap: 12px;
+  }
+  .goat-search-field {
+    font-size: 9.5px;
+    letter-spacing: 0.12em;
+  }
+  .goat-logo-text {
+    font-size: 14px;
+    letter-spacing: 0.2em;
   }
   .goat-card {
-    padding: 28px 20px 20px 20px;
+    padding: 24px 14px 16px 14px;
+    min-height: 260px;
+  }
+  .goat-card-img {
+    max-height: 110px;
+  }
+  .goat-title-line {
+    font-size: 9.5px;
+  }
+  .goat-title-line.sub {
+    font-size: 9px;
+  }
+  .goat-card-price-tag {
+    font-size: 10px;
+  }
+  .goat-filter-cell {
+    padding: 12px 12px;
+    font-size: 9px;
+    letter-spacing: 0.08em;
+  }
+  .goat-footer-black {
+    padding: 50px 24px 36px 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .goat-sneaker-grid {
+    grid-template-columns: 1fr;
+  }
+  .goat-filter-bar-grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 }

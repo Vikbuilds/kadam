@@ -2212,4 +2212,62 @@ body {
   }
 }
 
+/* Full Mobile & Small Device Optimization (< 640px) */
+@media (max-width: 640px) {
+  .mg-navbar {
+    padding: 10px 14px;
+  }
+  .mg-logo-glyph {
+    font-size: 20px;
+  }
+  .mg-logo-glyph span.omega {
+    font-size: 18px;
+  }
+  .mg-logo-sub {
+    font-size: 7px;
+    letter-spacing: 0.16em;
+  }
+  .mg-pill-btn {
+    padding: 6px 14px;
+    font-size: 9.5px;
+    letter-spacing: 0.1em;
+  }
+
+  /* Intro Screen Mobile */
+  .mg-opener-overlay {
+    padding: 24px 16px;
+  }
+  .mg-opener-sentence {
+    font-size: clamp(2.0rem, 7.5vw, 3.6rem);
+    margin-bottom: 24px;
+  }
+  .mg-opener-enter-btn {
+    padding: 14px 32px;
+    font-size: 10px;
+    letter-spacing: 0.22em;
+  }
+
+  /* Hero Section Mobile */
+  .mg-hero-fullbleed {
+    height: clamp(400px, 70vh, 560px);
+    min-height: 400px;
+  }
+  .mg-hero-fullbleed-img {
+    object-position: center 25%;
+  }
+  .mg-hero-text-overlay {
+    padding: 24px 16px 20px 16px;
+  }
+
+  /* Drawer Mobile Sheet */
+  .mg-drawer {
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .mg-drawer-body {
+    padding: 20px 16px;
+  }
+}
+
 
