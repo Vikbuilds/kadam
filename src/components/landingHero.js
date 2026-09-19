@@ -9,10 +9,9 @@ export function renderLandingNavbar(onShopClick, onCartClick, onStoryClick, onVi
   nav.className = 'mg-navbar';
 
   nav.innerHTML = `
-    <!-- Left Navigation Pills -->
+    <!-- Left Navigation Box Buttons -->
     <div class="mg-nav-group">
       <button class="mg-pill-btn" id="nav-btn-shop">Shop Catalog</button>
-      <button class="mg-pill-btn" id="nav-btn-story">The Story</button>
     </div>
 
     <!-- Center Logo -->
@@ -26,7 +25,6 @@ export function renderLandingNavbar(onShopClick, onCartClick, onStoryClick, onVi
     <!-- Right Balanced Spacer (Ensures Center Logo stays dead-centered) -->
     <div class="mg-nav-group mg-nav-spacer" style="visibility: hidden; pointer-events: none;" aria-hidden="true">
       <button class="mg-pill-btn">Shop Catalog</button>
-      <button class="mg-pill-btn">The Story</button>
     </div>
   `;
 
@@ -36,14 +34,9 @@ export function renderLandingNavbar(onShopClick, onCartClick, onStoryClick, onVi
     if (onShopClick) onShopClick();
   });
 
-  nav.querySelector('#nav-btn-story').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (onStoryClick) onStoryClick();
-  });
-
   nav.querySelector('#nav-logo').addEventListener('click', (e) => {
     e.preventDefault();
-    if (onStoryClick) onStoryClick();
+    if (onShopClick) onShopClick();
   });
 
   return nav;

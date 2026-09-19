@@ -90,9 +90,9 @@ function initApp() {
 
       const main = document.createElement('main');
       main.id = 'mg-main-content';
-      main.appendChild(renderHeroBanner(() => drawer && drawer.open()));
-      main.appendChild(renderSneakerLineBlockGrid((item) => drawer && drawer.open(item)));
-      main.appendChild(renderCrowThiefSection(() => drawer && drawer.open()));
+      main.appendChild(renderHeroBanner());
+      main.appendChild(renderSneakerLineBlockGrid(() => setView('catalog')));
+      main.appendChild(renderCrowThiefSection());
       app.appendChild(main);
 
       app.appendChild(renderEditorialFooter());

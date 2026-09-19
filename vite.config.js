@@ -1,5 +1,4 @@
 import { defineConfig } from 'vite';
-import viteImagemin from 'vite-plugin-imagemin';
 
 export default defineConfig({
   // ── Dev Server ─────────────────────────────────────────
@@ -8,26 +7,6 @@ export default defineConfig({
     open: false,
     host: true,
   },
-
-  // ── Plugins ────────────────────────────────────────────
-  plugins: [
-    viteImagemin({
-      // JPEG: mozjpeg — industry-standard, ~60-70% smaller
-      mozjpeg: { quality: 75, progressive: true },
-      // PNG: pngquant lossy first, then optipng lossless
-      pngquant: { quality: [0.65, 0.8], speed: 4 },
-      optipng:  { optimizationLevel: 5 },
-      // SVG: svgo with safe defaults
-      svgo: {
-        plugins: [
-          { name: 'removeViewBox', active: false },
-          { name: 'removeEmptyAttrs', active: true },
-        ],
-      },
-      // GIF passthrough (not used here)
-      gifsicle: { optimizationLevel: 2 },
-    }),
-  ],
 
   // ── Production Build ───────────────────────────────────
   build: {
