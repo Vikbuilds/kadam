@@ -738,7 +738,7 @@ body {
    ========================================================================== */
 .mg-crow-mascot-section {
   padding: 30px 0 50px 0;
-  background: var(--mg-canvas);
+  background: transparent;
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -865,6 +865,8 @@ body {
   height: auto;
   display: block;
   mix-blend-mode: multiply;
+  background: transparent;
+  filter: contrast(1.06);
   cursor: pointer;
   margin-left: 0;
   user-select: none;
