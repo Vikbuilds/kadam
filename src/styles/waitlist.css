@@ -1,0 +1,478 @@
+/* ==========================================
+   Kadam Culture — Minimalist Waitlist Styles
+   ========================================== */
+
+.kdm-waitlist-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  color: #0A0A0B;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+.kdm-waitlist-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px 32px;
+  border-bottom: 1px solid #E5E5E5;
+  background: #FFFFFF;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.kdm-waitlist-logo {
+  font-family: 'Syne', sans-serif;
+  font-weight: 800;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  color: #000000;
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  cursor: pointer;
+}
+
+.kdm-waitlist-logo-sub {
+  font-family: 'Space Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  color: #767676;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.kdm-waitlist-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.kdm-pill-btn-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 18px;
+  border-radius: 999px;
+  border: 1px solid #111111;
+  background: transparent;
+  color: #111111;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.kdm-pill-btn-outline:hover {
+  background: #111111;
+  color: #FFFFFF;
+}
+
+/* Main Container */
+.kdm-waitlist-main {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 24px;
+}
+
+.kdm-waitlist-card {
+  width: 100%;
+  max-width: 480px;
+  background: #FFFFFF;
+  border: 1px solid #E5E5E5;
+  padding: 48px 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  text-align: center;
+  animation: fadeIn 0.4s ease-out;
+}
+
+.kdm-waitlist-badge {
+  display: inline-block;
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: #C82333;
+  background: rgba(200, 35, 51, 0.08);
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 20px;
+  font-weight: 700;
+}
+
+.kdm-waitlist-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 38px;
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #0A0A0B;
+  margin: 0 0 14px 0;
+}
+
+.kdm-waitlist-sub {
+  font-size: 14px;
+  line-height: 1.6;
+  color: #666666;
+  margin: 0 0 36px 0;
+  font-weight: 400;
+}
+
+/* Form Styles */
+.kdm-waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: left;
+}
+
+.kdm-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.kdm-form-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: #444444;
+  font-weight: 700;
+}
+
+.kdm-form-input {
+  width: 100%;
+  padding: 14px 16px;
+  border: 1px solid #DCDCDC;
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: #0A0A0B;
+  background: #FAFAFA;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+  box-sizing: border-box;
+}
+
+.kdm-form-input:focus {
+  border-color: #000000;
+  background: #FFFFFF;
+}
+
+.kdm-waitlist-submit-btn {
+  width: 100%;
+  padding: 16px;
+  margin-top: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #0A0A0B;
+  color: #FFFFFF;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: transform 0.15s ease, background-color 0.2s ease;
+}
+
+.kdm-waitlist-submit-btn:hover {
+  background: #222222;
+  transform: translateY(-1px);
+}
+
+.kdm-waitlist-submit-btn:active {
+  transform: translateY(0);
+}
+
+/* Success Card */
+.kdm-waitlist-success {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.kdm-success-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #0A0A0B;
+  color: #FFFFFF;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 20px auto;
+  font-size: 20px;
+}
+
+.kdm-waitlist-ref-box {
+  margin-top: 24px;
+  padding: 16px;
+  background: #F5F5F7;
+  border-radius: 8px;
+  border: 1px dashed #CCCCCC;
+}
+
+.kdm-waitlist-ref-code {
+  font-family: 'Space Mono', monospace;
+  font-size: 16px;
+  font-weight: 700;
+  color: #0A0A0B;
+  letter-spacing: 0.1em;
+  margin-top: 4px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 540px) {
+  .kdm-waitlist-card {
+    padding: 32px 20px;
+  }
+  .kdm-waitlist-title {
+    font-size: 30px;
+  }
+}
+
+/* ==========================================
+   Hero Pill-Shaped Waitlist Widget Styles
+   ========================================== */
+.hero-waitlist-pill-wrap {
+  margin-top: 24px;
+  width: 100%;
+  max-width: 580px;
+}
+
+.hero-waitlist-pill-form {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 9999px;
+  padding: 6px 6px 6px 18px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.hero-waitlist-pill-form:focus-within {
+  border-color: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.hero-waitlist-pill-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  color: #FFFFFF;
+  background: #C82333;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  margin-right: 10px;
+  box-shadow: 0 2px 8px rgba(200, 35, 51, 0.4);
+}
+
+.hero-waitlist-pill-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: #FFFFFF;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  padding: 10px 6px;
+  min-width: 0;
+}
+
+.hero-waitlist-pill-input::placeholder {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-waitlist-pill-btn {
+  background: #FFFFFF;
+  color: #0A0A0B;
+  border: none;
+  border-radius: 9999px;
+  padding: 12px 24px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.hero-waitlist-pill-btn:hover {
+  background: #0A0A0B;
+  color: #FFFFFF;
+  transform: scale(1.02);
+}
+
+.hero-waitlist-pill-btn:active {
+  transform: scale(0.98);
+}
+
+/* Success Banner */
+.hero-waitlist-pill-success {
+  display: flex;
+  align-items: center;
+  background: rgba(16, 185, 129, 0.18);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(16, 185, 129, 0.4);
+  border-radius: 9999px;
+  padding: 12px 24px;
+  color: #FFFFFF;
+  font-family: 'Space Mono', monospace;
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  gap: 12px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.25);
+  animation: fadeIn 0.3s ease;
+}
+
+.hero-waitlist-success-text {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  color: #FFFFFF;
+}
+
+@media (max-width: 640px) {
+  .hero-waitlist-pill-form {
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 20px;
+    padding: 12px;
+    gap: 10px;
+  }
+  .hero-waitlist-pill-badge {
+    align-self: flex-start;
+    margin-right: 0;
+  }
+  .hero-waitlist-pill-btn {
+    width: 100%;
+    text-align: center;
+  }
+  .hero-waitlist-pill-success {
+    border-radius: 20px;
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* ==========================================
+   Home Page Shoe Catalog Curiosity Blur & Lock
+   ========================================== */
+.mg-line-block-curiosity-active .mg-lb-shoe-img {
+  filter: blur(8px) opacity(0.72) contrast(0.9);
+  transition: filter 0.4s ease, transform 0.4s ease;
+}
+
+.mg-line-block-curiosity-active .mg-lb-shoe-cell:hover .mg-lb-shoe-img {
+  filter: blur(4px) opacity(0.85) contrast(1);
+}
+
+.mg-lb-curiosity-lock-banner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 25;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  background: rgba(10, 10, 11, 0.82);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.22);
+  border-radius: 24px;
+  padding: 36px 40px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  max-width: 480px;
+  width: 90%;
+  pointer-events: auto;
+}
+
+.mg-lb-curiosity-pill-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  color: #FFFFFF;
+  background: #C82333;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 14px rgba(200, 35, 51, 0.4);
+}
+
+.mg-lb-curiosity-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF;
+  letter-spacing: 0.04em;
+  margin-bottom: 10px;
+  line-height: 1.2;
+}
+
+.mg-lb-curiosity-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 13.5px;
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.mg-lb-curiosity-unlock-btn {
+  background: #FFFFFF;
+  color: #0A0A0B;
+  border: none;
+  border-radius: 9999px;
+  padding: 14px 28px;
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+}
+
+.mg-lb-curiosity-unlock-btn:hover {
+  background: #C82333;
+  color: #FFFFFF;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(200, 35, 51, 0.4);
+}
+
+

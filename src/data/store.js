@@ -248,6 +248,34 @@ class Store {
     this.hasDubrae = state !== undefined ? state : !this.hasDubrae;
     this.emit('visualizerUpdated');
   }
+
+  // Waitlist Management
+  saveWaitlistEntry(entry) {
+    try {
+      const existing = JSON.parse(localStorage.getItem('kdm_waitlist') || '[]');
+      const newEntry = {
+        id: 'KDM-W-' + Math.floor(1000 + Math.random() * 9000),
+        name: entry.name || '',
+        email: entry.email || '',
+        sneaker: entry.sneaker || '',
+        createdAt: new Date().toISOString()
+      };
+      existing.push(newEntry);
+      localStorage.setItem('kdm_waitlist', JSON.stringify(existing));
+      return newEntry;
+    } catch (e) {
+      console.warn('Could not save waitlist entry', e);
+      return { id: 'KDM-W-' + Math.floor(1000 + Math.random() * 9000), ...entry };
+    }
+  }
+
+  getWaitlistEntries() {
+    try {
+      return JSON.parse(localStorage.getItem('kdm_waitlist') || '[]');
+    } catch (e) {
+      return [];
+    }
+  }
 }
 
 export const store = new Store();

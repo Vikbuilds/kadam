@@ -3,16 +3,15 @@
  * Renders Top Navbar, Subheader, Rounded Surreal Hero Banner, and Mega Headline
  * Exact match with the preview screenshot architecture.
  */
+import { store } from '../data/store.js';
 
-export function renderLandingNavbar(onShopClick, onCartClick, onStoryClick, onVisualizerClick) {
+export function renderLandingNavbar(onLogoClick) {
   const nav = document.createElement('header');
   nav.className = 'mg-navbar';
 
   nav.innerHTML = `
-    <!-- Left Navigation Box Buttons -->
-    <div class="mg-nav-group">
-      <button class="mg-pill-btn" id="nav-btn-shop">Shop Catalog</button>
-    </div>
+    <!-- Left Spacer for centering logo -->
+    <div style="width: 140px;" class="mg-nav-spacer"></div>
 
     <!-- Center Logo -->
     <a href="#" class="mg-logo-container" id="nav-logo" aria-label="Kadam Culture Home">
@@ -22,21 +21,28 @@ export function renderLandingNavbar(onShopClick, onCartClick, onStoryClick, onVi
       <div class="mg-logo-sub">कदम · CULTURE LAB</div>
     </a>
 
-    <!-- Right Balanced Spacer (Ensures Center Logo stays dead-centered) -->
-    <div class="mg-nav-group mg-nav-spacer" style="visibility: hidden; pointer-events: none;" aria-hidden="true">
-      <button class="mg-pill-btn">Shop Catalog</button>
-    </div>
+    <!-- Right Side: Waitlist CTA Button -->
+    <button class="mg-pill-btn" id="nav-waitlist-btn">
+      JOIN WAITLIST →
+    </button>
   `;
-
-  // Attach event listeners
-  nav.querySelector('#nav-btn-shop').addEventListener('click', (e) => {
-    e.preventDefault();
-    if (onShopClick) onShopClick();
-  });
 
   nav.querySelector('#nav-logo').addEventListener('click', (e) => {
     e.preventDefault();
-    if (onShopClick) onShopClick();
+    if (onLogoClick) onLogoClick();
+    else window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  nav.querySelector('#nav-waitlist-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const waitlistSec = document.getElementById('mg-crow-mascot');
+    if (waitlistSec) {
+      waitlistSec.scrollIntoView({ behavior: 'smooth' });
+      const emailInput = waitlistSec.querySelector('input[type="email"]');
+      if (emailInput) {
+        setTimeout(() => emailInput.focus(), 600);
+      }
+    }
   });
 
   return nav;

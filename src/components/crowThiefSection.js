@@ -1,7 +1,8 @@
 /**
  * crowThiefSection.js
- * The Black Crow Mascot with Interactive Tracking Eye & Full Background Street Caution Tape
+ * The Black Crow Mascot with Interactive Tracking Eye & Embedded Waitlist
  */
+import { renderWaitlistPillBar } from './waitlistPillBar.js';
 
 export function renderCrowThiefSection(onLaceClick) {
   const section = document.createElement('section');
@@ -9,38 +10,12 @@ export function renderCrowThiefSection(onLaceClick) {
   section.id = 'mg-crow-mascot';
 
   section.innerHTML = `
-    <!-- Full-Width Background Street Caution Tapes -->
-    <div class="mg-caution-bg-wrapper" aria-hidden="true">
-      <!-- Tape 1: Safety Yellow Caution Tape (Sliding Left) -->
-      <div class="mg-caution-tape tape-yellow tape-angle-1">
-        <div class="mg-caution-marquee-track scroll-left">
-          <div class="mg-caution-text">
-            <span>⚠️ CAUTION // DO NOT CROSS // KADAM CULTURE® // STREET—WOVEN CLASSICS // 140CM DOUBLE JACQUARD // SOLID CNC BRASS // ⚠️ CAUTION // DO NOT CROSS //</span>
-            <span>⚠️ CAUTION // DO NOT CROSS // KADAM CULTURE® // STREET—WOVEN CLASSICS // 140CM DOUBLE JACQUARD // SOLID CNC BRASS // ⚠️ CAUTION // DO NOT CROSS //</span>
-            <span>⚠️ CAUTION // DO NOT CROSS // KADAM CULTURE® // STREET—WOVEN CLASSICS // 140CM DOUBLE JACQUARD // SOLID CNC BRASS // ⚠️ CAUTION // DO NOT CROSS //</span>
-          </div>
-        </div>
-      </div>
-
-      <!-- Tape 2: Black & Yellow Hazard Street Tape (Sliding Right) -->
-      <div class="mg-caution-tape tape-hazard tape-angle-2">
-        <div class="mg-caution-marquee-track scroll-right">
-          <div class="mg-caution-text">
-            <span>/// KADAM CULTURE® /// 100% ORGANIC COMBED COTTON /// ZERO PLASTIC GUARANTEE /// HEAVY SOLID AGLETS /// DO NOT CROSS ///</span>
-            <span>/// KADAM CULTURE® /// 100% ORGANIC COMBED COTTON /// ZERO PLASTIC GUARANTEE /// HEAVY SOLID AGLETS /// DO NOT CROSS ///</span>
-            <span>/// KADAM CULTURE® /// 100% ORGANIC COMBED COTTON /// ZERO PLASTIC GUARANTEE /// HEAVY SOLID AGLETS /// DO NOT CROSS ///</span>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Foreground Content Layer: Mascot on Left, Clean Action Tag on Right -->
     <div class="mg-crow-foreground-container">
       <!-- Crow Mascot Perched on Left -->
       <div class="mg-crow-mascot-wrapper">
         <img 
-          src="/assets/crow_mascot.jpg" 
-          alt="Black Crow Mascot carrying custom laces" 
+          src="/assets/crow_branch_exact.png" 
+          alt="Kadam Culture Crow Mascot on Tree Branch with Custom Laces and Sneakers" 
           class="mg-crow-mascot-img"
           loading="lazy"
         />
@@ -53,10 +28,31 @@ export function renderCrowThiefSection(onLaceClick) {
           </div>
         </div>
       </div>
+
+      <!-- Embedded Waitlist Content on Right -->
+      <div class="mg-crow-waitlist-box">
+        <span class="mg-crow-waitlist-kicker">[ DROP 001 VIP ACCESS ]</span>
+        <h3 class="mg-crow-waitlist-title">JOIN THE WAITLIST</h3>
+        <p class="mg-crow-waitlist-sub">
+          Be first to claim limited 140cm double-jacquard laces, solid CNC brass aglets, and handcrafted Indian heritage weaves.
+        </p>
+        <div class="mg-crow-waitlist-input-slot"></div>
+      </div>
     </div>
   `;
 
-  // Attach interactive eye tracking physics (Mouse + Scroll Tracking from Top to Bottom)
+  // Render waitlist input inside the crow mascot section slot
+  const inputSlot = section.querySelector('.mg-crow-waitlist-input-slot');
+  if (inputSlot) {
+    const pill = renderWaitlistPillBar({
+      placeholder: 'Enter your email for early access...',
+      buttonText: 'CLAIM VIP ACCESS →',
+      idPrefix: 'crow-section-wl'
+    });
+    inputSlot.appendChild(pill);
+  }
+
+  // Attach interactive eye tracking physics
   const eye = section.querySelector('#mg-crow-eye');
   const pupil = section.querySelector('.mg-crow-pupil');
   const eyeLid = section.querySelector('.mg-crow-eye-lid');
@@ -88,36 +84,25 @@ export function renderCrowThiefSection(onLaceClick) {
       const maxScroll = Math.max(1, doc.scrollHeight - windowHeight);
       const currentScrollY = window.scrollY || window.pageYOffset || 0;
 
-      // 1. Overall Page Scroll Progress (0 at very top, 1 at very bottom)
       const pageRatio = Math.max(0, Math.min(1, currentScrollY / maxScroll));
 
-      // 2. Crow Section Viewport Progress
       const sectionRect = section.getBoundingClientRect();
       const travelDistance = windowHeight + sectionRect.height * 0.8;
       const sectionProgress = Math.max(0, Math.min(1, (windowHeight - sectionRect.top) / travelDistance));
 
-      // Blend section progress (65%) and full page progress (35%) so the eye is ALWAYS
-      // dynamically looking from top to bottom across the entire scroll experience!
       const scrollProgress = sectionProgress * 0.65 + pageRatio * 0.35;
 
-      // Map progress [0, 1] to normalized [-1, 1]
-      // Progress 0: Eye looks UP at the top of the screen (-maxTravel)
-      // Progress 0.5: Eye looks CENTERED (0)
-      // Progress 1.0: Eye looks DOWN towards the bottom (+maxTravel)
       const normalizedScrollY = (scrollProgress - 0.5) * 2;
       let scrollGazeY = normalizedScrollY * (maxTravel * 0.94);
 
-      // Add dynamic scroll wheel impulse for instant tactile response
       scrollGazeY += wheelImpulse * 1.8;
-      wheelImpulse *= 0.82; // decay impulse
+      wheelImpulse *= 0.82;
 
-      // Horizontal forward glance towards laces/content on right
       const scrollGazeX = 1.8;
 
       let finalX = scrollGazeX;
       let finalY = scrollGazeY;
 
-      // 3. Mouse Interaction (Active ONLY when user is NOT actively scrolling)
       const now = performance.now();
       const isMouseActive = !isScrolling && mouseX !== null && (now - lastRealMouseMove < 1800);
 
@@ -142,7 +127,6 @@ export function renderCrowThiefSection(onLaceClick) {
         }
       }
 
-      // Clamp strictly within circular eye socket boundary
       const currentDist = Math.hypot(finalX, finalY);
       if (currentDist > maxTravel) {
         const scale = maxTravel / currentDist;
@@ -195,12 +179,10 @@ export function renderCrowThiefSection(onLaceClick) {
     window.addEventListener('mousemove', onMouseMove, { passive: true });
     window.addEventListener('resize', scheduleUpdate, { passive: true });
 
-    // Initial position calculation
     requestAnimationFrame(() => {
       updateGaze();
     });
 
-    // Periodic natural blink
     const triggerBlink = () => {
       if (eyeLid) {
         eyeLid.style.transform = 'scaleY(0.06)';
@@ -214,7 +196,6 @@ export function renderCrowThiefSection(onLaceClick) {
       triggerBlink();
     }, 4000 + Math.random() * 3000);
 
-    // Double wink on click
     eye.addEventListener('click', (e) => {
       e.stopPropagation();
       triggerBlink();
