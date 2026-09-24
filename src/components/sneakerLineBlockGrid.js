@@ -136,6 +136,23 @@ export function renderSneakerLineBlockGrid(onProductClick) {
 
                 <!-- Corner Numbering Tag -->
                 <div class="mg-lb-num-tag">${item.num}</div>
+
+                <!-- Hover Information & Waitlist Capsule -->
+                <div class="mg-lb-hover-capsule">
+                  <div class="mg-lb-hover-top">
+                    <div class="mg-lb-hover-lock">
+                      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
+                        <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
+                      </svg>
+                      <span>LOCKED DROP</span>
+                    </div>
+                    <span class="mg-lb-hover-name">${item.laceStyle}</span>
+                  </div>
+                  <div class="mg-lb-hover-bottom">
+                    <span class="mg-lb-hover-cta">JOIN THE WAITLIST →</span>
+                  </div>
+                </div>
               </div>
             `;
           }).join('')}
@@ -150,13 +167,19 @@ export function renderSneakerLineBlockGrid(onProductClick) {
     </div>
   `;
 
-  // Center button click
-  // Sneaker cell clicks
+  // Sneaker cell clicks - Scroll smoothly to Join Waitlist section
   const shoeCells = section.querySelectorAll('.mg-lb-shoe-cell');
   shoeCells.forEach((cell) => {
     cell.addEventListener('click', (e) => {
       e.preventDefault();
-      if (onProductClick) onProductClick();
+      const waitlistSec = document.getElementById('mg-crow-mascot');
+      if (waitlistSec) {
+        waitlistSec.scrollIntoView({ behavior: 'smooth' });
+        const emailInput = waitlistSec.querySelector('input[type="email"]');
+        if (emailInput) {
+          setTimeout(() => emailInput.focus(), 600);
+        }
+      }
     });
   });
 

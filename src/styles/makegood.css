@@ -556,13 +556,52 @@ body {
 }
 
 .mg-lb-hover-capsule {
-  display: none !important;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: translateY(8px);
+  transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  pointer-events: none;
+  z-index: 10;
+}
+
+.mg-lb-shoe-cell:hover .mg-lb-hover-capsule {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mg-lb-hover-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mg-lb-hover-lock {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  color: #71717a;
+  text-transform: uppercase;
 }
 
 .mg-lb-hover-name {
   font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-weight: 900;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #000000;
   white-space: nowrap;
@@ -570,35 +609,19 @@ body {
   text-overflow: ellipsis;
 }
 
-.mg-lb-hover-lace {
-  font-size: 10px;
-  color: #52525b;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.mg-lb-hover-bottom-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-top: 4px;
+.mg-lb-hover-bottom {
   border-top: 1px solid rgba(0, 0, 0, 0.08);
-  margin-top: 2px;
+  padding-top: 4px;
 }
 
-.mg-lb-hover-price {
+.mg-lb-hover-cta {
   font-family: var(--font-mono);
-  font-size: 11.5px;
-  font-weight: 700;
-  color: #000000;
-}
-
-.mg-lb-hover-action {
-  font-size: 9.5px;
+  font-size: 10px;
   font-weight: 800;
   letter-spacing: 0.1em;
   color: #000000;
+  text-transform: uppercase;
+  display: block;
 }
 
 /* Center Editorial Brand Block */
@@ -2140,6 +2163,30 @@ body {
     top: 6px;
     left: 8px;
     font-size: 7.5px;
+  }
+
+  /* Make Lookbook hover capsule static on mobile */
+  .mg-lb-hover-capsule {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    padding: 6px 8px;
+    gap: 3px;
+    background: rgba(255, 255, 255, 0.96);
+  }
+  .mg-lb-hover-lock {
+    font-size: 8px;
+    gap: 3px;
+  }
+  .mg-lb-hover-lock svg {
+    width: 9px;
+    height: 9px;
+  }
+  .mg-lb-hover-name {
+    font-size: 9px;
+  }
+  .mg-lb-hover-cta {
+    font-size: 8px;
+    letter-spacing: 0.05em;
   }
   .mg-lb-center-cell {
     padding: 8px 4px;
